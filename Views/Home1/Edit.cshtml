@@ -1,0 +1,48 @@
+﻿@model ecommerce.Models.Product
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 style="color:chocolate">Edit</h2>
+<h4> Edit information of your product </h4>
+<img src="~/Content/files/@Model.Image" width="150" height="150" />
+  
+@using (Html.BeginForm()) {
+   
+    <div align="center">
+    <fieldset>
+        <legend></legend>
+
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="editor-label" style="color:chocolate;">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.Name)
+           
+        </div>
+
+        <div class="editor-label" style="color:chocolate;">
+            @Html.LabelFor(model => model.Price)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.Price)
+           
+        </div>
+
+       
+    </fieldset>
+        </div>
+}
+<br>
+<div align="center">
+     <p>
+           <input type="submit" value="Save" />
+           @Html.ActionLink("Back to List", "Index")
+      </p>
+  
+</div>
+<br>

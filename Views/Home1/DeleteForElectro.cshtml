@@ -1,0 +1,47 @@
+﻿@model ecommerce.Models.Electro
+@{
+    ViewBag.Title = "DeleteForElectro";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@section Scripts{
+    <script type=" text/javascript">
+       $(document).ready(function(){
+          $("#deleteAlert").click(function(){
+               alert("Your record has successfully deleted!");
+         });
+    });
+    </script>
+ }
+<h2 style="color:chocolate">Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+
+<table border="1" align="center">
+<thead>
+    <tr>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Color</th>
+        <th>Quality</th>
+    </tr>
+</thead>
+<tbody>
+        <tr>
+            <td><img src="~/Content/files/@Model.Image" width="150" height="150" /></td>
+            <td>@Model.Name</td>
+            <td>@Model.Price</td>
+            <td>@Model.Color</td>
+            <td>@Model.Quality</td>
+        </tr>
+</tbody>
+</table>
+<div align="center">
+@using (Html.BeginForm()) {
+    <p>
+        <input id="deleteAlert" class="hvr-bounce-in" type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}
+    </div>

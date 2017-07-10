@@ -1,0 +1,67 @@
+﻿@{
+    ViewBag.Title = "DisplayForElectro";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@{
+ 
+    ecommerce.Models.Database1Entities6 db = new ecommerce.Models.Database1Entities6();
+}
+@section Scripts{
+    <script type=" text/javascript">
+       $(document).ready(function(){
+          $("#edit").click(function(){
+               alert("Do you want to delete it!");
+         });
+    });
+    </script>
+ }
+<script>
+    function myDelete() {
+      var txt;
+      var r = confirm("Do you want to delete!");
+      if (r == true) {
+          var id = 
+          // txt = "You pressed OK!";
+          // window.location.href = '../Home/Contact';
+          window.location.href = '@Url.Action("Delete", "Home1")';
+     } else {
+          txt = "You pressed Cancel!";
+     }
+    // document.getElementById("demo").innerHTML = txt;
+}
+</script>
+@using (Html.BeginForm())
+{
+<table border="1" align="center">
+<thead>
+    <tr>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Color</th>
+        <th>Quality</th>
+        <th>      </th>
+        <th>      </th>
+    </tr>
+</thead>
+<tbody>
+   
+    @foreach (var item in db.Electroes)
+    {
+        if (item.IsDeleted == "No")
+        {
+            <tr>
+            <td><img src="~/Content/files/@item.Image" width="150" height="150" /></td>
+            <td>@item.Name</td>
+            <td>@item.Price</td>
+            <td>@item.Color</td>
+            <td>@item.Quality</td>
+            <td> @Html.ActionLink("Edit", "EditForElectro", new { id=item.Id }) </td>                
+            <td> @Html.ActionLink("Delete", "DeleteForElectro", new { id=item.Id })</td>
+        </tr>
+        }
+    }
+</tbody>
+</table>
+}

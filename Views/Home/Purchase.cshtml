@@ -1,0 +1,84 @@
+﻿@{
+    ViewBag.Title = "Purchase";
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+<script type=" text/javascript">
+       $(document).ready(function(){
+          $("#sub").click(function(){
+                 var x1= $("#fn").val()
+                 var x2= $("#ln").val()
+                 var x3= $("#addr").val()
+                 var x4= $("#pho").val()
+                    if(x1 == "" || x2 == "" ||  x3 == "" || x4 == "")
+                {
+                       alert("All fields are required");
+                }
+                else
+                {
+                    alert("Your order placed successfully!");
+                }
+         });
+    });
+    </script>
+
+<script>
+function validateForm() {
+    var x1 = document.forms["myForm"]["fn"].value;
+    var x2 = document.forms["myForm"]["ln"].value;
+    var x3 = document.forms["myForm"]["addr"].value;
+    var x4 = document.forms["myForm"]["pho"].value;
+    if (x1 == "" || x2 == "" || x3 == "" || x4 == "") {
+        alert("All fields must be filled out");
+        return false;
+    }
+    else {
+        alert("Your order has successfully placed");
+        return true;
+    }
+}
+</script>
+
+<h2 style="color:chocolate">Purchase</h2>
+
+<form  name="myForm" action="/Home/Purchase" method="post"></form>
+    <div align="center">
+       <div>
+            <label style="color:chocolate">First Name</label>
+        </div>
+        <div>
+            <input  id="fn" name="fn" type="text" value="" required="" />
+            
+        </div>
+     <div>
+            <label style="color:chocolate">Last Name</label>
+        </div>
+        <div>
+            <input  id="ln" name="ln" type="text" value="" required="" />
+            
+        </div>
+        <br>
+         <div>
+            <label style="color:chocolate">Delievery Address</label>
+        </div>
+        <div>
+            <input  id="addr" name="addr" type="text" value="" required=""/>
+            
+        </div>
+        <br>
+         <div>
+            <label style="color:chocolate">Phone No (format: xxxx-xxx-xxxx)</label>
+        </div>
+        <div>
+            <input  id="pho" name="pho"placeholder="03XX-XXXX-XXXX" type="tel" title="XXXX-XXXX-XXXX" pattern="^\d{4}-\d{3}-\d{4}$" value="" required="" />
+             
+            
+        </div>
+        <br>
+       
+       
+    <input id="sub" type="submit" name="submit" value="Submit" />  
+        </form> 
+    <br><br>   
+    @ViewBag.Message  
+        </div> 
+}  

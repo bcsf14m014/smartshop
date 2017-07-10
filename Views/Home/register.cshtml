@@ -1,0 +1,44 @@
+﻿@model ecommerce.Models.signup
+
+@{
+    ViewBag.Title = "register";
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+
+<h2 style="color:chocolate">Register</h2>
+<div align="center">
+@using (Html.BeginForm("Create1", "Home", FormMethod.Post, null))
+                                        {
+                                            <form>
+
+                                                 <div class="sign-up">
+                                                    @Html.LabelFor(model => model.Email)
+                                                </div>
+                                                <div class="sign-up">
+                                                    @Html.EditorFor(model => model.Email)
+                                                    @Html.ValidationMessageFor(model => model.Email)
+                                                </div>
+
+                                                <div class="sign-up">
+                                                    @Html.LabelFor(model => model.Password)
+                                                </div>
+                                                <div class="sign-up">
+                                                    @Html.PasswordFor(model => model.Password)
+                                                    @Html.ValidationMessageFor(model => model.Password)
+                                                </div>
+
+                                                <div>
+                                                     <h4>Re-type Password:</h4>
+			                                        <input type="password" value="Password" name="pass2"  required="">
+                                                    </div>
+
+        
+                                                <p>
+                                                    <input type="submit" value="Register" />
+                                                  
+                                                </p>
+                                            </form>
+                                            
+                                        }
+                                            </div>
+                                        

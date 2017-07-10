@@ -1,0 +1,48 @@
+﻿@{
+    ViewBag.Title = "Delstock";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@{
+    ecommerce.Models.Database1Entities5 db = new ecommerce.Models.Database1Entities5();
+    ecommerce.Models.Database1Entities6 db1 = new ecommerce.Models.Database1Entities6();
+}
+<h2 style="color:chocolate">List of all products which have been deleted</h2>
+
+@using (Html.BeginForm())
+{
+<table border="1" align="center">
+<thead>
+    <tr>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Price</th>
+    </tr>
+</thead>
+<tbody>
+   
+    @foreach (var item in db.Products)
+    {
+        if (item.IsDeleted == "Yes")
+        {
+            <tr>
+            <td><img src="~/Content/files/@item.Image" width="150" height="150" /></td>
+            <td>@item.Name</td>
+            <td>@item.Price</td>             
+        </tr>
+        }
+    }
+
+    @foreach (var item in db1.Electroes)
+    {
+        if (item.IsDeleted == "Yes")
+        {
+            <tr>
+            <td><img src="~/Content/files/@item.Image" width="150" height="150" /></td>
+            <td>@item.Name</td>
+            <td>@item.Price</td>             
+        </tr>
+        }
+    }
+</tbody>
+</table>
+}
